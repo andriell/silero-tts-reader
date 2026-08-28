@@ -1,0 +1,10 @@
+services:
+  silero-tts-custom:
+    build: .
+    container_name: silero-tts-server
+    ports:
+      - 8000:8000
+    volumes:
+      # Монтируем папку кэша Torch на ваш ПК, чтобы модели не удалялись при перезапуске
+      - ./torch_cache:/app/.cache/torch
+    restart: unless-stopped
